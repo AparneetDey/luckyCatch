@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://du0pq4mrtxkp1"]
+
+[ext_resource type="PackedScene" uid="uid://c1tejbeekvmmm" path="res://scenes/environment/river/river.tscn" id="1_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://c4ch4uq2ifiq8" path="res://scenes/Environment/sky/sky.tscn" id="2_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://b6ms10r31vyfn" path="res://scenes/vfx/ripple.tscn" id="2_6m72w"]
+[ext_resource type="PackedScene" uid="uid://lb8wxqoe3vvg" path="res://scenes/ui/ui.tscn" id="3_1fp7r"]
+
+[node name="World" type="Node2D" unique_id=1446171337]
+
+[node name="River" parent="." unique_id=1554497775 instance=ExtResource("1_sl2e5")]
+
+[node name="Ripple" parent="River" unique_id=4452992 instance=ExtResource("2_6m72w")]
+position = Vector2(32, 72)
+
+[node name="Sky" parent="." unique_id=930396837 instance=ExtResource("2_1fp7r")]
+
+[node name="UI" parent="." unique_id=1434395001 instance=ExtResource("3_1fp7r")]
