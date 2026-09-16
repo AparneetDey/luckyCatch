@@ -6,6 +6,7 @@ extends Node2D
 @export var return_speed : float
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var line_point: Marker2D = %LinePoint
 
 enum State {IDLE, PULL_LEFT, PULL_RIGHT}
 

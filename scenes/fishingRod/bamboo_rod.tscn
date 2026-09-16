@@ -96,3 +96,8 @@ hframes = 4
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_43efo")
 autoplay = &"idle"
+
+[node name="LinePoint" type="Marker2D" parent="." unique_id=949769098]
+unique_name_in_owner = true
+position = Vector2(0, -28)
+gizmo_extents = 0.0

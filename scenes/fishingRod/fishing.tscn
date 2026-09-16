@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b0bfam1bqhrq4"]
+
+[ext_resource type="PackedScene" uid="uid://cl3kuq0kpcsxr" path="res://scenes/fishingRod/bamboo_rod.tscn" id="1_1tkfe"]
+[ext_resource type="Script" uid="uid://pvnlbnurhpv7" path="res://scenes/fishingRod/fishing.gd" id="1_gbvil"]
+[ext_resource type="PackedScene" uid="uid://r1wmc4ra70oc" path="res://scenes/fishingRod/bobber.tscn" id="2_gbvil"]
+
+[node name="Fishing" type="Node2D" unique_id=843873026]
+script = ExtResource("1_gbvil")
+
+[node name="BambooRod" parent="." unique_id=1336956881 instance=ExtResource("1_1tkfe")]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+
+[node name="Bobber" parent="." unique_id=374119411 instance=ExtResource("2_gbvil")]
+unique_name_in_owner = true
+position = Vector2(0, -45)
+
+[node name="FishingLine" type="Line2D" parent="." unique_id=1761840477]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
+default_color = Color(0.8117647, 0.67058825, 0.31764707, 1)
