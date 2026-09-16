@@ -1,3 +1,4 @@
+class_name River
 extends Node2D
 
 const RIPPLE_PREFAB = preload("res://scenes/vfx/ripple.tscn")

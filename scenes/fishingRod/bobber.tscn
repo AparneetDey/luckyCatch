@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dsdtwpanulsdd" path="res://assets/vfx/ripple-sprite.png" id="1_gimnf"]
 [ext_resource type="Texture2D" uid="uid://dlc176dtqq6xn" path="res://assets/fishingRod/bobber-sprite.png" id="1_kkebe"]
-[ext_resource type="Texture2D" uid="uid://d35rr2uujg8rp" path="res://assets/fishingRod/splash-sprite.png" id="2_2fmbl"]
+[ext_resource type="Texture2D" uid="uid://d35rr2uujg8rp" path="res://assets/vfx/splash-sprite.png" id="2_2fmbl"]
 
 [sub_resource type="Animation" id="Animation_gimnf"]
 length = 0.001
@@ -42,6 +42,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SplashSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RippleSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tggis"]
 resource_name = "catch"
@@ -70,6 +94,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RippleSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SplashSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_2fmbl"]
@@ -101,6 +149,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SplashSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RippleSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tggis"]
 _data = {
@@ -112,12 +184,14 @@ _data = {
 [node name="Bobber" type="Node2D" unique_id=374119411]
 
 [node name="RippleSprite" type="Sprite2D" parent="." unique_id=1451355914]
+visible = false
 texture = ExtResource("1_gimnf")
 centered = false
 offset = Vector2(-9, -8)
 hframes = 5
 
 [node name="SplashSprite" type="Sprite2D" parent="." unique_id=219159759]
+visible = false
 texture = ExtResource("2_2fmbl")
 centered = false
 offset = Vector2(-8, -8)

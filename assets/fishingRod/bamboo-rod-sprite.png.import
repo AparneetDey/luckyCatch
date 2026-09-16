@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d35rr2uujg8rp"
-path="res://.godot/imported/splash-sprite.png-36c913a444f995c05c92c3e33923bb73.ctex"
+uid="uid://cyl2pk4qijj3e"
+path="res://.godot/imported/bamboo-rod-sprite.png-928a098014e1420cb33f5a74bae3d69f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fishingRod/splash-sprite.png"
-dest_files=["res://.godot/imported/splash-sprite.png-36c913a444f995c05c92c3e33923bb73.ctex"]
+source_file="res://assets/fishingRod/bamboo-rod-sprite.png"
+dest_files=["res://.godot/imported/bamboo-rod-sprite.png-928a098014e1420cb33f5a74bae3d69f.ctex"]
 
 [params]
 

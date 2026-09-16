@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c4ch4uq2ifiq8" path="res://scenes/environment/sky/sky.tscn" id="2_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://lb8wxqoe3vvg" path="res://scenes/ui/ui.tscn" id="3_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://r1wmc4ra70oc" path="res://scenes/fishingRod/bobber.tscn" id="4_6m72w"]
+[ext_resource type="PackedScene" uid="uid://cl3kuq0kpcsxr" path="res://scenes/fishingRod/bamboo_rod.tscn" id="5_v5dby"]
 
 [node name="World" type="Node2D" unique_id=1446171337]
 
@@ -14,4 +15,7 @@
 [node name="UI" parent="." unique_id=1434395001 instance=ExtResource("3_1fp7r")]
 
 [node name="Bobber" parent="." unique_id=374119411 instance=ExtResource("4_6m72w")]
-position = Vector2(77, 80)
+position = Vector2(80, 80)
+
+[node name="BambooRod" parent="." unique_id=1336956881 instance=ExtResource("5_v5dby")]
+position = Vector2(80, 117)
