@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c1tejbeekvmmm"]
 
+[ext_resource type="Script" uid="uid://ckb8oaq6t0tj" path="res://scenes/environment/river/river.gd" id="1_0gs15"]
 [ext_resource type="Texture2D" uid="uid://ccpavqhtb8fxa" path="res://assets/river/river-sprite.png" id="1_43qx3"]
 
 [sub_resource type="Animation" id="Animation_0gs15"]
@@ -42,6 +43,9 @@ _data = {
 }
 
 [node name="River" type="Node2D" unique_id=1554497775]
+script = ExtResource("1_0gs15")
+max_ripple_delay = 7000.0
+min_ripple_delay = 2000.0
 
 [node name="RiverSprite" type="Sprite2D" parent="." unique_id=686802798]
 texture = ExtResource("1_43qx3")
@@ -52,23 +56,24 @@ hframes = 4
 libraries/ = SubResource("AnimationLibrary_vrvo8")
 autoplay = &"idle"
 
-[node name="FishSpots" type="Node2D" parent="." unique_id=22614431]
+[node name="RippleSpots" type="Node2D" parent="." unique_id=22614431]
+unique_name_in_owner = true
 position = Vector2(80, 72)
 
-[node name="Marker1" type="Node2D" parent="FishSpots" unique_id=1355559297]
+[node name="Marker1" type="Node2D" parent="RippleSpots" unique_id=1355559297]
 position = Vector2(-61, 25)
 
-[node name="Marker2" type="Node2D" parent="FishSpots" unique_id=1243274646]
+[node name="Marker2" type="Node2D" parent="RippleSpots" unique_id=1243274646]
 position = Vector2(-55, -4)
 
-[node name="Marker3" type="Node2D" parent="FishSpots" unique_id=595588467]
+[node name="Marker3" type="Node2D" parent="RippleSpots" unique_id=595588467]
 position = Vector2(45, -13)
 
-[node name="Marker4" type="Node2D" parent="FishSpots" unique_id=373636143]
+[node name="Marker4" type="Node2D" parent="RippleSpots" unique_id=373636143]
 position = Vector2(22, 7)
 
-[node name="Marker5" type="Node2D" parent="FishSpots" unique_id=1423063493]
+[node name="Marker5" type="Node2D" parent="RippleSpots" unique_id=1423063493]
 position = Vector2(49, 28)
 
-[node name="Marker6" type="Node2D" parent="FishSpots" unique_id=2115942278]
+[node name="Marker6" type="Node2D" parent="RippleSpots" unique_id=2115942278]
 position = Vector2(-28, 16)
