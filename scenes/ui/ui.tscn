@@ -6,10 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c72bd4lh1whyv" path="res://assets/ui/buttons/s-button.png" id="4_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://c401ibwy7tupk" path="res://assets/ui/buttons/c-button.png" id="5_uegxj"]
 [ext_resource type="Texture2D" uid="uid://byfqbg5igg63g" path="res://assets/ui/buttons/v-button.png" id="6_y220t"]
+[ext_resource type="PackedScene" uid="uid://crh0fxd6eoetj" path="res://scenes/ui/reel-bar/reel_bar.tscn" id="7_7vp6q"]
 
 [node name="UI" type="CanvasLayer" unique_id=1434395001]
 
-[node name="Control" type="Control" parent="." unique_id=1577532642]
+[node name="ControlUI" type="Control" parent="." unique_id=1577532642]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackgroundUI" type="TextureRect" parent="Control" unique_id=725083846]
+[node name="BackgroundUI" type="TextureRect" parent="ControlUI" unique_id=725083846]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -32,7 +33,7 @@ grow_vertical = 0
 texture = ExtResource("1_u7n8c")
 stretch_mode = 2
 
-[node name="Buttons" type="Control" parent="Control/BackgroundUI" unique_id=519448967]
+[node name="Buttons" type="Control" parent="ControlUI/BackgroundUI" unique_id=519448967]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +41,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DPad" type="TextureRect" parent="Control/BackgroundUI/Buttons" unique_id=315307670]
+[node name="DPad" type="TextureRect" parent="ControlUI/BackgroundUI/Buttons" unique_id=315307670]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -53,7 +54,7 @@ grow_vertical = 0
 texture = ExtResource("2_pfayw")
 stretch_mode = 2
 
-[node name="AButton" type="TextureRect" parent="Control/BackgroundUI/Buttons" unique_id=113541640]
+[node name="AButton" type="TextureRect" parent="ControlUI/BackgroundUI/Buttons" unique_id=113541640]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -66,7 +67,7 @@ grow_horizontal = 0
 texture = ExtResource("3_7vp6q")
 stretch_mode = 2
 
-[node name="SButton" type="TextureRect" parent="Control/BackgroundUI/Buttons" unique_id=1161321488]
+[node name="SButton" type="TextureRect" parent="ControlUI/BackgroundUI/Buttons" unique_id=1161321488]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -82,7 +83,7 @@ grow_vertical = 0
 texture = ExtResource("4_jcn1r")
 stretch_mode = 2
 
-[node name="CButton" type="TextureRect" parent="Control/BackgroundUI/Buttons" unique_id=1611058973]
+[node name="CButton" type="TextureRect" parent="ControlUI/BackgroundUI/Buttons" unique_id=1611058973]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -95,7 +96,7 @@ grow_vertical = 0
 texture = ExtResource("5_uegxj")
 stretch_mode = 2
 
-[node name="VButton" type="TextureRect" parent="Control/BackgroundUI/Buttons" unique_id=2036558554]
+[node name="VButton" type="TextureRect" parent="ControlUI/BackgroundUI/Buttons" unique_id=2036558554]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -107,3 +108,16 @@ offset_bottom = -2.0
 grow_vertical = 0
 texture = ExtResource("6_y220t")
 stretch_mode = 2
+
+[node name="ReelBar" parent="." unique_id=516664388 instance=ExtResource("7_7vp6q")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -40.0
+offset_right = 38.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
