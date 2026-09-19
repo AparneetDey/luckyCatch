@@ -8,6 +8,7 @@ extends Node2D
 
 enum State {IDLE, CASTING, WAITING, BITE, FIGHT, CAUGHT, FAILED}
 
+var current_fish : FishData = null
 var state := State.IDLE
 var waiting_time := 0.0 # Testing
 
@@ -24,6 +25,8 @@ func _process(_delta: float) -> void:
 		waiting_time -= _delta
 		if waiting_time <= 0:
 			state = State.BITE
+			current_fish = FishManager.select_fish()
+			print(current_fish.display_name)
 			StateManager.fish_bite.emit()
 
 func handle_input() -> void:

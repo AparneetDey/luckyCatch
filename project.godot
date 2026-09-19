@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 StateManager="*uid://3ipb2jmhbgvm"
+FishManager="*uid://c8nt62r88cg6d"
 
 [debug]
 

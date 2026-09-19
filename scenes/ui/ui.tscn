@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://lb8wxqoe3vvg"]
 
+[ext_resource type="Script" uid="uid://g7lpv0jiug1f" path="res://scenes/ui/ui.gd" id="1_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://qax1um8hyvta" path="res://assets/ui/background-ui.png" id="1_u7n8c"]
 [ext_resource type="Texture2D" uid="uid://jjjwdou1ymhe" path="res://assets/ui/buttons/D-pad.png" id="2_pfayw"]
 [ext_resource type="Texture2D" uid="uid://ckj365jm6q3fw" path="res://assets/ui/buttons/a-button.png" id="3_7vp6q"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://crh0fxd6eoetj" path="res://scenes/ui/reel-bar/reel_bar.tscn" id="7_7vp6q"]
 
 [node name="UI" type="CanvasLayer" unique_id=1434395001]
+script = ExtResource("1_jcn1r")
 
 [node name="ControlUI" type="Control" parent="." unique_id=1577532642]
 layout_mode = 3
@@ -110,6 +112,8 @@ texture = ExtResource("6_y220t")
 stretch_mode = 2
 
 [node name="ReelBar" parent="." unique_id=516664388 instance=ExtResource("7_7vp6q")]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
