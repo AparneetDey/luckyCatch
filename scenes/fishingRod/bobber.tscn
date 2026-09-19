@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dsdtwpanulsdd" path="res://assets/vfx/ripple-sprite.png" id="1_gimnf"]
 [ext_resource type="Texture2D" uid="uid://dlc176dtqq6xn" path="res://assets/fishingRod/bobber-sprite.png" id="1_kkebe"]
+[ext_resource type="Script" uid="uid://d142x3kl3fu7q" path="res://scenes/fishingRod/bobber.gd" id="1_tggis"]
 [ext_resource type="Texture2D" uid="uid://d35rr2uujg8rp" path="res://assets/vfx/splash-sprite.png" id="2_2fmbl"]
 
 [sub_resource type="Animation" id="Animation_gimnf"]
@@ -66,6 +67,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LinePoint:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3)]
+}
 
 [sub_resource type="Animation" id="Animation_tggis"]
 resource_name = "catch"
@@ -118,6 +131,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LinePoint:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -4), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_2fmbl"]
@@ -173,6 +198,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LinePoint:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -3), Vector2(0, -2), Vector2(0, -1), Vector2(0, -2)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tggis"]
 _data = {
@@ -182,6 +219,7 @@ _data = {
 }
 
 [node name="Bobber" type="Node2D" unique_id=374119411]
+script = ExtResource("1_tggis")
 
 [node name="RippleSprite" type="Sprite2D" parent="." unique_id=1451355914]
 visible = false
@@ -200,9 +238,13 @@ hframes = 2
 [node name="BobberSprite" type="Sprite2D" parent="." unique_id=2053975592]
 texture = ExtResource("1_kkebe")
 centered = false
-offset = Vector2(-8, -8)
+offset = Vector2(-8, -16)
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=308328116]
 libraries/ = SubResource("AnimationLibrary_tggis")
 autoplay = &"idle"
+
+[node name="LinePoint" type="Marker2D" parent="." unique_id=724454121]
+position = Vector2(0, -3)
+gizmo_extents = 0.0
