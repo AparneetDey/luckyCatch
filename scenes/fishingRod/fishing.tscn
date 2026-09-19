@@ -2,10 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://cl3kuq0kpcsxr" path="res://scenes/fishingRod/bamboo_rod.tscn" id="1_1tkfe"]
 [ext_resource type="Script" uid="uid://pvnlbnurhpv7" path="res://scenes/fishingRod/fishing.gd" id="1_gbvil"]
+[ext_resource type="PackedScene" uid="uid://b6ms10r31vyfn" path="res://scenes/vfx/ripple.tscn" id="2_8by4o"]
 [ext_resource type="PackedScene" uid="uid://r1wmc4ra70oc" path="res://scenes/fishingRod/bobber.tscn" id="2_gbvil"]
 
 [node name="Fishing" type="Node2D" unique_id=843873026]
 script = ExtResource("1_gbvil")
+
+[node name="Ripple" parent="." unique_id=4452992 instance=ExtResource("2_8by4o")]
+visible = false
+position = Vector2(1, -45)
+one_time = false
 
 [node name="BambooRod" parent="." unique_id=1336956881 instance=ExtResource("1_1tkfe")]
 unique_name_in_owner = true

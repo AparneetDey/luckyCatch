@@ -4,22 +4,30 @@ extends Node2D
 @onready var bamboo_rod: BambooRod = %BambooRod
 @onready var bobber: Bobber = %Bobber
 @onready var fishing_line: Line2D = %FishingLine
+@onready var ripple: Node2D = $Ripple
 
 enum State {IDLE, CASTING, WAITING, BITE, FIGHT, CAUGHT, FAILED}
 
 var state := State.IDLE
+var waiting_time := 0.0 # Testing
 
 func _ready() -> void:
 	bobber.cast_complete.connect(onCastComplete.bind())
 
 func _process(_delta: float) -> void:
 	fishing_line.visible = isFishing()
+	ripple.visible = state == State.BITE or state == State.FIGHT
 	handle_input()
 	handleFishingLine()
+	
+	if state == State.WAITING:
+		waiting_time -= _delta
+		if waiting_time <= 0:
+			state = State.BITE
+			StateManager.fish_bite.emit()
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("a") and state == State.IDLE:
-		print("cast")
 		StateManager.cast_bobber.emit()
 		state = State.CASTING
 
@@ -34,3 +42,4 @@ func isFishing() -> bool:
 
 func onCastComplete() -> void:
 	state = State.WAITING
+	waiting_time = randf_range(2.0, 5.0)

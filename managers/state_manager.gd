@@ -1,4 +1,4 @@
 extends Node
 
 signal cast_bobber
-signal fish_caught
+signal fish_bite

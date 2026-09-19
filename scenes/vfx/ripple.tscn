@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b6ms10r31vyfn"]
 
+[ext_resource type="Script" uid="uid://cdtb66rd8y85v" path="res://scenes/vfx/ripple.gd" id="1_q0prm"]
 [ext_resource type="Texture2D" uid="uid://dsdtwpanulsdd" path="res://assets/vfx/ripple-sprite.png" id="1_si04w"]
 
 [sub_resource type="Animation" id="Animation_q0prm"]
@@ -44,7 +45,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
+"method": &"onAnimationComplete"
 }]
 }
 
@@ -55,6 +56,7 @@ _data = {
 }
 
 [node name="Ripple" type="Node2D" unique_id=4452992]
+script = ExtResource("1_q0prm")
 
 [node name="RippleSprite" type="Sprite2D" parent="." unique_id=1487480641]
 texture = ExtResource("1_si04w")
