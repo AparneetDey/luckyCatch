@@ -8,14 +8,19 @@ enum Rarity {
 }
 
 const FISH_LIST : Array[FishData] = [
-	preload("res://fish_resources/jacket_fish.tres"),
-	preload("res://fish_resources/looking_heart.tres"),
-	preload("res://fish_resources/salmon.tres"),
-	preload("res://fish_resources/space_worm.tres"),
 	preload("res://fish_resources/useless_can.tres"),
-	preload("res://fish_resources/venomu.tres"),
 	preload("res://fish_resources/weird_plant.tres"),
-	
+	preload("res://fish_resources/salmon.tres"),
+	preload("res://fish_resources/tiny_fish.tres"),
+	preload("res://fish_resources/looking_heart.tres"),
+	preload("res://fish_resources/creepy_starfish.tres"),
+	preload("res://fish_resources/happy_jelly.tres"),
+	preload("res://fish_resources/tortle.tres"),
+	preload("res://fish_resources/jacket_fish.tres"),
+	preload("res://fish_resources/confused_octo.tres"),
+	preload("res://fish_resources/venomu.tres"),
+	preload("res://fish_resources/space_worm.tres"),
+	preload("res://fish_resources/wing_snake.tres"),
 ]
 
 var fish_collection : Dictionary = {}
