@@ -1,6 +1,69 @@
 [gd_scene format=3 uid="uid://b4m4s4rlftugv"]
 
-[ext_resource type="Texture2D" uid="uid://gyvlioy4pocf" path="res://assets/ui/main-screen-bg.png" id="1_0qv31"]
+[ext_resource type="Texture2D" uid="uid://gyvlioy4pocf" path="res://assets/main/main-screen-bg.png" id="1_0qv31"]
+[ext_resource type="Texture2D" uid="uid://53y8vafas327" path="res://assets/main/title-1-sprite.png" id="2_ggbdh"]
+[ext_resource type="Texture2D" uid="uid://dmwp5ff6d46va" path="res://assets/main/title-2-sprite.png" id="3_bku2l"]
+
+[sub_resource type="Animation" id="Animation_ggbdh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-111.085, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(162.81, 34)]
+}
+
+[sub_resource type="Animation" id="Animation_bku2l"]
+resource_name = "load"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40106815),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-114, 4), Vector2(13, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099920094, 0.50098825),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(166, 34), Vector2(43, 34)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_omlv2"]
+_data = {
+&"RESET": SubResource("Animation_ggbdh"),
+&"load": SubResource("Animation_bku2l")
+}
 
 [node name="MainScreen" type="Control" unique_id=776375242]
 layout_mode = 3
@@ -15,3 +78,30 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_0qv31")
+stretch_mode = 2
+
+[node name="Title1" type="TextureRect" parent="." unique_id=1127350982]
+layout_mode = 1
+offset_left = -111.085
+offset_top = 4.0
+offset_right = -4.084999
+offset_bottom = 32.0
+texture = ExtResource("2_ggbdh")
+stretch_mode = 2
+
+[node name="Title2" type="TextureRect" parent="." unique_id=2024614142]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 2.8099976
+offset_top = 34.0
+offset_right = 100.81012
+offset_bottom = 56.0
+grow_horizontal = 0
+texture = ExtResource("3_bku2l")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1188578353]
+libraries/ = SubResource("AnimationLibrary_omlv2")
+autoplay = &"load"
