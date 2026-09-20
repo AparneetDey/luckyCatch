@@ -9,4 +9,7 @@ script = ExtResource("2_b1b0i")
 display_name = "Sample 1"
 fish_sprite = ExtResource("1_cd8ni")
 silhouette_sprite = ExtResource("3_dbu3h")
+movement_radius_x = 10.0
+movement_radius_y = 4.0
+movement_speed = 3.0
 metadata/_custom_type_script = "uid://m03rmk72eevw"

@@ -25,5 +25,10 @@ extends Resource
 
 @export var danger_limit : float = 3.0
 
+@export_category("Movement")
+@export var movement_radius_x : float = 12.0
+@export var movement_radius_y : float = 6.0
+@export var movement_speed : float = 4.0
+
 @export_category("Catch")
 @export var catch_weight : float = 1.0

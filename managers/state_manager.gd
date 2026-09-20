@@ -14,3 +14,5 @@ signal catch_failed
 signal pop_up_close
 
 signal task_info(text: String)
+
+signal spawn_bobber_ripple(position: Vector2)

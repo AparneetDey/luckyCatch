@@ -1,3 +1,4 @@
+class_name Ripple
 extends Node2D
 
 @export var one_time : bool = true

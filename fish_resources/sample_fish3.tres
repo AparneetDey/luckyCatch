@@ -10,4 +10,6 @@ display_name = "Sample 3"
 rarity = 2
 fish_sprite = ExtResource("1_b0fwj")
 silhouette_sprite = ExtResource("3_djpt4")
+movement_radius_x = 18.0
+movement_speed = 5.0
 metadata/_custom_type_script = "uid://m03rmk72eevw"

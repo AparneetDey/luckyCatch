@@ -31,7 +31,7 @@ func on_idle() -> void:
 
 func _process(delta: float) -> void:
 	fishing_line.visible = isFishing()
-	ripple.visible = state == State.BITE or state == State.FIGHT
+	ripple.visible = state == State.BITE
 	handle_input(delta)
 	handle_fishing_line()
 	handle_catch_time(delta)
@@ -43,11 +43,13 @@ func _process(delta: float) -> void:
 		if waiting_time <= 0:
 			state = State.BITE
 			current_fish = FishManager.select_fish()
-			print(current_fish.display_name)
 			reel_speed = current_fish.reel_speed
 			release_speed = current_fish.release_speed
 			safe_zone_size = current_fish.safe_zone_start_size
 			safe_zone_position = randf_range(0.0, 1.0 - safe_zone_size)
+			bobber.movement_radius_x = current_fish.movement_radius_x
+			bobber.movement_radius_y = current_fish.movement_radius_y
+			bobber.movement_speed = current_fish.movement_speed
 			StateManager.update_safe_zone.emit(safe_zone_size, safe_zone_position)
 			StateManager.fish_bite.emit()
 			StateManager.task_info.emit("S to Reel")

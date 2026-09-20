@@ -14,13 +14,14 @@ var time_since_last_ripple : float = Time.get_ticks_msec()
 func _ready() -> void:
 	duration_between_ripple = randf_range(min_ripple_delay, max_ripple_delay)
 	time_since_last_ripple = Time.get_ticks_msec()
+	StateManager.spawn_bobber_ripple.connect(spawn_ripple_around_bobber.bind())
 
 func _process(_delta: float) -> void:
 	spawn_ripple()
 
 func spawn_ripple() -> void:
 	if(Time.get_ticks_msec() - time_since_last_ripple > duration_between_ripple):
-		var ripple : Node2D = RIPPLE_PREFAB.instantiate()
+		var ripple : Ripple = RIPPLE_PREFAB.instantiate()
 		var ind : int = randi_range(0, ripple_spots.get_child_count() - 1)
 		var ripple_spot : Node2D = ripple_spots.get_child(ind)
 		
@@ -28,3 +29,8 @@ func spawn_ripple() -> void:
 		call_deferred("add_child", ripple)
 		duration_between_ripple = randf_range(min_ripple_delay, max_ripple_delay)
 		time_since_last_ripple = Time.get_ticks_msec()
+
+func spawn_ripple_around_bobber(ripple_position: Vector2) -> void:
+	var ripple : Ripple = RIPPLE_PREFAB.instantiate()
+	ripple.position = ripple_position
+	call_deferred("add_child", ripple)
