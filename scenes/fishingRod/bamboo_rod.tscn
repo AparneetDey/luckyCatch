@@ -131,8 +131,8 @@ _data = {
 [node name="BambooRod" type="Node2D" unique_id=1336956881]
 script = ExtResource("1_ged40")
 max_shift_from_center = 10
-pull_speed = 4.0
-return_speed = 2.0
+pull_speed = 20.0
+return_speed = 16.0
 
 [node name="BambooRodSprite" type="Sprite2D" parent="." unique_id=1479466855]
 texture = ExtResource("2_jm16a")

@@ -15,7 +15,6 @@ var state : State = State.IDLE
 
 func _ready() -> void:
 	initial_position = position
-	print("rod")
 
 func _process(delta: float) -> void:
 	handle_animation()
@@ -47,6 +46,4 @@ func handle_input(delta: float) -> void:
 		var target_x := initial_position.x + max_shift_from_center * input_dir
 		
 		position.x = move_toward(position.x, target_x, pull_speed * delta)
-	
-	print(position.x)
 	

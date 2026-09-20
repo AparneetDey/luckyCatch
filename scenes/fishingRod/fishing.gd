@@ -1,6 +1,7 @@
 class_name Fishing
 extends Node2D
 
+const DANGER_LIMIT : float = 5.0
 
 @onready var bamboo_rod: BambooRod = %BambooRod
 @onready var bobber: Bobber = %Bobber
@@ -9,7 +10,9 @@ extends Node2D
 
 enum State {IDLE, CASTING, WAITING, BITE, FIGHT, CAUGHT, FAILED}
 
+var catch_progress : float = 0.0
 var current_fish : FishData = null
+var danger_time : float = 0.0
 var reel_speed : float
 var release_speed : float
 var state := State.IDLE
@@ -25,7 +28,9 @@ func _process(delta: float) -> void:
 	fishing_line.visible = isFishing()
 	ripple.visible = state == State.BITE or state == State.FIGHT
 	handle_input(delta)
-	handleFishingLine()
+	handle_fishing_line()
+	handle_catch_time(delta)
+	handle_danger_time(delta)
 	
 	if state == State.WAITING:
 		waiting_time -= delta
@@ -50,7 +55,6 @@ func handle_input(delta: float) -> void:
 		StateManager.reel_start.emit()
 	
 	if state == State.FIGHT:
-		print(isInsideSafeZone())
 		if Input.is_action_pressed("s"):
 			tension += reel_speed * delta
 		else:
@@ -59,11 +63,33 @@ func handle_input(delta: float) -> void:
 		tension = clamp(tension, 0.0, 1.0)
 		StateManager.update_reel_indicator.emit(tension)
 
-func handleFishingLine() -> void:
+func handle_fishing_line() -> void:
 	var rod_point := fishing_line.to_local(bamboo_rod.line_point.global_position)
 	var bobber_point := fishing_line.to_local(bobber.line_point.global_position)
 	fishing_line.set_point_position(0, rod_point)
 	fishing_line.set_point_position(1, bobber_point)
+
+func handle_danger_time(delta: float) -> void:
+	if state == State.FIGHT:
+		if isInsideSafeZone():
+			danger_time = 0
+		else:
+			danger_time += delta
+			
+			if danger_time >= DANGER_LIMIT:
+				print("Catch Fail")
+				StateManager.catch_failed.emit()
+				state = State.FAILED
+
+func handle_catch_time(delta: float) -> void:
+	if state == State.FIGHT:
+		if isInsideSafeZone():
+			catch_progress += delta
+			
+			if catch_progress >= current_fish.required_catch_time:
+				print("Fish caught")
+				StateManager.fish_caught.emit(current_fish)
+				state = State.CAUGHT
 
 func isFishing() -> bool:
 	return [State.WAITING, State.BITE, State.FIGHT, State.CASTING].has(state)
