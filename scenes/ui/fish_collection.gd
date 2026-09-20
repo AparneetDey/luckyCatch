@@ -33,7 +33,6 @@ func populate() -> void:
 			display_fish.set_fish_sprite(fish.fish_sprite)
 			display_fish.set_fish_name(fish.display_name)
 		else:
-			print(fish.silhouette_sprite)
 			display_fish.set_fish_sprite(fish.silhouette_sprite)
 			display_fish.set_fish_name("-----")
 

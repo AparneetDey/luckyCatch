@@ -35,6 +35,7 @@ func on_idle() -> void:
 func _process(delta: float) -> void:
 	fishing_line.visible = isFishing()
 	ripple.visible = state == State.BITE
+	ripple.global_position = bobber.global_position
 	if ripple.visible and (Time.get_ticks_msec() - time_since_ripple_sound) > duration_between_ripple_sound:
 		SoundPlayer.play(SoundManager.Sound.RIPPLE, true)
 		time_since_ripple_sound = Time.get_ticks_msec()

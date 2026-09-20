@@ -70,7 +70,7 @@ func onFightStart() -> void:
 	fight_time = 0.0
 	ripple_timer.start()
 
-func onFightStop(_fish: FishData) -> void:
+func onFightStop(_fish: FishData = null) -> void:
 	fighting = false
 	ripple_timer.stop()
 
