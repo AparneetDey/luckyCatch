@@ -26,6 +26,7 @@ func _ready() -> void:
 	StateManager.fish_bite.connect(onFishBite.bind())
 	StateManager.reel_start.connect(onFightStart.bind())
 	StateManager.fish_caught.connect(onFightStop.bind())
+	StateManager.catch_failed.connect(onFightStop.bind())
 
 func _process(delta: float) -> void:
 	handle_animation()
@@ -82,3 +83,6 @@ func biting_complete() -> void:
 
 func _on_timer_timeout() -> void:
 	StateManager.spawn_bobber_ripple.emit(global_position)
+
+func play_ripple_sound() -> void:
+	SoundPlayer.play(SoundManager.Sound.RIPPLE)

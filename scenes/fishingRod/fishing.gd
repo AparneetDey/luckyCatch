@@ -8,6 +8,9 @@ extends Node2D
 
 enum State {IDLE, CASTING, WAITING, BITE, FIGHT, CAUGHT, FAILED}
 
+var time_since_ripple_sound : float = Time.get_ticks_msec()
+var duration_between_ripple_sound : float = 500.0
+
 var catch_progress : float = 0.0
 var current_fish : FishData = null
 var danger_time : float = 0.0
@@ -32,6 +35,9 @@ func on_idle() -> void:
 func _process(delta: float) -> void:
 	fishing_line.visible = isFishing()
 	ripple.visible = state == State.BITE
+	if ripple.visible and (Time.get_ticks_msec() - time_since_ripple_sound) > duration_between_ripple_sound:
+		SoundPlayer.play(SoundManager.Sound.RIPPLE, true)
+		time_since_ripple_sound = Time.get_ticks_msec()
 	handle_input(delta)
 	handle_fishing_line()
 	handle_catch_time(delta)

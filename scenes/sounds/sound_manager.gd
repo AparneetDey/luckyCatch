@@ -8,6 +8,6 @@ enum Sound {RIPPLE, SPLASH}
 func play(sound: Sound, tweakPitch: bool = false):
 	var addedPitch := 0.0
 	if tweakPitch:
-		addedPitch = randf_range(-0.3, 0.3)
-	sounds[sound as int].pitch_scale += addedPitch
+		addedPitch += randf_range(-0.3, 0.3)
+	sounds[sound as int].pitch_scale = 1 + addedPitch
 	sounds[sound as int].play()

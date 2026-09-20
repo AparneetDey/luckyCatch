@@ -5,7 +5,6 @@ extends Node2D
 
 func _ready() -> void:
 	SoundPlayer.play(SoundManager.Sound.RIPPLE, true)
-	print("load")
 
 func onAnimationComplete() -> void:
 	if one_time:
