@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://crrsilvwiao0l"]
+
+[ext_resource type="Script" uid="uid://m03rmk72eevw" path="res://fish_data.gd" id="1_3inhg"]
+[ext_resource type="Texture2D" uid="uid://fnn3v33oanfb" path="res://assets/fishes/fish-1.png" id="1_ojowf"]
+[ext_resource type="Texture2D" uid="uid://dixj75knl2avg" path="res://assets/fishes/fish-1-silhouette.png" id="3_0ssct"]
+
+[resource]
+script = ExtResource("1_3inhg")
+fish_id = "salmon"
+display_name = "Salmon"
+fish_sprite = ExtResource("1_ojowf")
+silhouette_sprite = ExtResource("3_0ssct")
+safe_zone_start_size = 0.6
+safe_zone_min_size = 0.35
+max_reel_speed = 1.5
+max_release_speed = 0.75
+required_catch_time = 10.0
+danger_limit = 5.0
+movement_speed = 3.0
+catch_weight = 3.5
+metadata/_custom_type_script = "uid://m03rmk72eevw"

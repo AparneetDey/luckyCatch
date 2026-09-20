@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://0xo1hxhc0dnk"]
+
+[ext_resource type="Texture2D" uid="uid://fel77mv7uaee" path="res://assets/fishes/creepy-starfish-sprite.png" id="1_8nou2"]
+[ext_resource type="Script" uid="uid://m03rmk72eevw" path="res://fish_data.gd" id="2_kss04"]
+[ext_resource type="Texture2D" uid="uid://bnfy1m4xinbw1" path="res://assets/fishes/creepy-starfish-silhouette-sprite.png" id="3_kss04"]
+
+[resource]
+script = ExtResource("2_kss04")
+fish_id = "creepy_starfish"
+display_name = "Creepy Starfish"
+rarity = 1
+fish_sprite = ExtResource("1_8nou2")
+silhouette_sprite = ExtResource("3_kss04")
+safe_zone_start_size = 0.45
+safe_zone_min_size = 0.3
+difficulty_interval = 3.0
+reel_speed = 1.0
+max_reel_speed = 1.75
+max_release_speed = 0.75
+required_catch_time = 15.0
+movement_radius_x = 16.0
+movement_speed = 3.0
+catch_weight = 5.0
+metadata/_custom_type_script = "uid://m03rmk72eevw"

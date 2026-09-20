@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cffxl10m6nff8"]
+
+[ext_resource type="Texture2D" uid="uid://cm47niu66t7p3" path="res://assets/fishes/weird-plant-sprite.png" id="1_shqvr"]
+[ext_resource type="Script" uid="uid://m03rmk72eevw" path="res://fish_data.gd" id="2_h8use"]
+[ext_resource type="Texture2D" uid="uid://bx4ao4e3woxv3" path="res://assets/fishes/weird-plant-silhouette-sprite.png" id="3_h8use"]
+
+[resource]
+script = ExtResource("2_h8use")
+fish_id = "weird_plant"
+display_name = "Weird Plant"
+fish_sprite = ExtResource("1_shqvr")
+silhouette_sprite = ExtResource("3_h8use")
+safe_zone_start_size = 0.6
+safe_zone_min_size = 0.35
+max_reel_speed = 1.5
+max_release_speed = 0.75
+required_catch_time = 10.0
+danger_limit = 5.0
+movement_radius_x = 0.0
+movement_radius_y = 0.0
+movement_speed = 0.0
+catch_weight = 2.0
+metadata/_custom_type_script = "uid://m03rmk72eevw"

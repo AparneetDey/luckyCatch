@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bavl71m714b33"]
+
+[ext_resource type="Texture2D" uid="uid://o62y0f41r0ns" path="res://assets/fishes/venomu-sprite.png" id="1_vi56j"]
+[ext_resource type="Script" uid="uid://m03rmk72eevw" path="res://fish_data.gd" id="2_78x2b"]
+[ext_resource type="Texture2D" uid="uid://pcupdqfu2miv" path="res://assets/fishes/venomu-silhouette-sprite.png" id="3_78x2b"]
+
+[resource]
+script = ExtResource("2_78x2b")
+fish_id = "venomu"
+display_name = "Venomu"
+rarity = 2
+fish_sprite = ExtResource("1_vi56j")
+silhouette_sprite = ExtResource("3_78x2b")
+safe_zone_start_size = 0.3
+difficulty_interval = 2.5
+reel_speed = 1.5
+release_speed = 0.75
+max_reel_speed = 2.0
+danger_limit = 1.5
+movement_radius_x = 18.0
+movement_radius_y = 8.0
+movement_speed = 3.0
+catch_weight = 25.0
+metadata/_custom_type_script = "uid://m03rmk72eevw"

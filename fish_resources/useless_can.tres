@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://b1caryr7ae8qi"]
+
+[ext_resource type="Texture2D" uid="uid://bccm1uxedrv3t" path="res://assets/fishes/useless-can-sprite.png" id="1_34ojn"]
+[ext_resource type="Script" uid="uid://m03rmk72eevw" path="res://fish_data.gd" id="2_jbfm8"]
+[ext_resource type="Texture2D" uid="uid://0crkb3baqwsc" path="res://assets/fishes/useless-can-silhouette-sprite.png" id="3_jbfm8"]
+
+[resource]
+script = ExtResource("2_jbfm8")
+fish_id = "useless_can"
+display_name = "Useless Can"
+fish_sprite = ExtResource("1_34ojn")
+silhouette_sprite = ExtResource("3_jbfm8")
+safe_zone_start_size = 0.6
+safe_zone_min_size = 0.35
+max_reel_speed = 1.5
+max_release_speed = 0.75
+required_catch_time = 10.0
+danger_limit = 5.0
+movement_radius_x = 0.0
+movement_radius_y = 0.0
+movement_speed = 0.0
+metadata/_custom_type_script = "uid://m03rmk72eevw"

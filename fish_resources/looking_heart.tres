@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://b4qfvtxe1i0cy"]
+
+[ext_resource type="Texture2D" uid="uid://sryedkjqjhcr" path="res://assets/fishes/heart-sprite.png" id="1_po7rg"]
+[ext_resource type="Script" uid="uid://m03rmk72eevw" path="res://fish_data.gd" id="2_2q28b"]
+[ext_resource type="Texture2D" uid="uid://r3kus4ym771y" path="res://assets/fishes/heart-silhouette-sprite.png" id="3_2q28b"]
+
+[resource]
+script = ExtResource("2_2q28b")
+fish_id = "looking_heart"
+display_name = "Looking Heart"
+rarity = 1
+fish_sprite = ExtResource("1_po7rg")
+silhouette_sprite = ExtResource("3_2q28b")
+safe_zone_start_size = 0.45
+safe_zone_min_size = 0.3
+difficulty_interval = 3.0
+reel_speed = 1.0
+max_reel_speed = 1.75
+max_release_speed = 0.75
+required_catch_time = 15.0
+movement_radius_x = 16.0
+movement_speed = 3.0
+catch_weight = 5.0
+metadata/_custom_type_script = "uid://m03rmk72eevw"
