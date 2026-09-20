@@ -1,6 +1,7 @@
 class_name Fishing
 extends Node2D
 
+
 @onready var bamboo_rod: BambooRod = %BambooRod
 @onready var bobber: Bobber = %Bobber
 @onready var fishing_line: Line2D = %FishingLine
@@ -9,30 +10,53 @@ extends Node2D
 enum State {IDLE, CASTING, WAITING, BITE, FIGHT, CAUGHT, FAILED}
 
 var current_fish : FishData = null
+var reel_speed : float
+var release_speed : float
 var state := State.IDLE
+var safe_zone_size : float = 0.0
+var safe_zone_position : float = 0.0
+var tension : float = 0.0
 var waiting_time := 0.0 # Testing
 
 func _ready() -> void:
 	bobber.cast_complete.connect(onCastComplete.bind())
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	fishing_line.visible = isFishing()
 	ripple.visible = state == State.BITE or state == State.FIGHT
-	handle_input()
+	handle_input(delta)
 	handleFishingLine()
 	
 	if state == State.WAITING:
-		waiting_time -= _delta
+		waiting_time -= delta
 		if waiting_time <= 0:
 			state = State.BITE
 			current_fish = FishManager.select_fish()
 			print(current_fish.display_name)
+			reel_speed = current_fish.reel_speed
+			release_speed = current_fish.release_speed
+			safe_zone_size = current_fish.safe_zone_start_size
+			safe_zone_position = randf_range(0.0, 1.0 - safe_zone_size)
+			StateManager.update_safe_zone.emit(safe_zone_size, safe_zone_position)
 			StateManager.fish_bite.emit()
 
-func handle_input() -> void:
+func handle_input(delta: float) -> void:
 	if Input.is_action_just_pressed("a") and state == State.IDLE:
 		StateManager.cast_bobber.emit()
 		state = State.CASTING
+	
+	if state == State.BITE and Input.is_action_just_pressed("s"):
+		state = State.FIGHT
+		StateManager.reel_start.emit()
+	
+	if state == State.FIGHT:
+		if Input.is_action_pressed("s"):
+			tension += reel_speed * delta
+		else:
+			tension -= release_speed * delta
+		
+		tension = clamp(tension, 0.0, 1.0)
+		StateManager.update_reel_indicator.emit(tension)
 
 func handleFishingLine() -> void:
 	var rod_point := fishing_line.to_local(bamboo_rod.line_point.global_position)

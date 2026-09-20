@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cl3kuq0kpcsxr"]
 
-[ext_resource type="Script" uid="uid://cowfq3w26boai" path="res://bamboo_rod.gd" id="1_ged40"]
+[ext_resource type="Script" uid="uid://cowfq3w26boai" path="res://scenes/fishingRod/bamboo_rod.gd" id="1_ged40"]
 [ext_resource type="Texture2D" uid="uid://cyl2pk4qijj3e" path="res://assets/fishingRod/bamboo-rod-sprite.png" id="2_jm16a"]
 
 [sub_resource type="Animation" id="Animation_etlpr"]
@@ -130,9 +130,6 @@ _data = {
 
 [node name="BambooRod" type="Node2D" unique_id=1336956881]
 script = ExtResource("1_ged40")
-max_shift_from_center = 10
-pull_speed = 50.0
-return_speed = 25.0
 
 [node name="BambooRodSprite" type="Sprite2D" parent="." unique_id=1479466855]
 texture = ExtResource("2_jm16a")

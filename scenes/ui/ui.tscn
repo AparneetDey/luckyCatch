@@ -35,6 +35,22 @@ grow_vertical = 0
 texture = ExtResource("1_u7n8c")
 stretch_mode = 2
 
+[node name="ReelBar" parent="ControlUI/BackgroundUI" unique_id=516664388 instance=ExtResource("7_7vp6q")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -24.0
+offset_right = 38.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="Buttons" type="Control" parent="ControlUI/BackgroundUI" unique_id=519448967]
 layout_mode = 1
 anchors_preset = 15
@@ -110,18 +126,3 @@ offset_bottom = -2.0
 grow_vertical = 0
 texture = ExtResource("6_y220t")
 stretch_mode = 2
-
-[node name="ReelBar" parent="." unique_id=516664388 instance=ExtResource("7_7vp6q")]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -38.0
-offset_top = -40.0
-offset_right = 38.0
-offset_bottom = -27.0
-grow_horizontal = 2
-grow_vertical = 0

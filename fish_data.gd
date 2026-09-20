@@ -10,9 +10,18 @@ extends Resource
 @export var silhouette_sprite : Texture2D
 
 @export_category("Difficulty")
-@export var safe_zone_size : float = 30.0
-@export var reel_resistance : float = 1.0
-@export var tension_recovery : float = 1.0
+@export var safe_zone_start_size: float = 0.35
+@export var safe_zone_min_size: float = 0.15
+
+@export var difficulty_interval: float = 5.0
+
+@export var reel_speed: float = 0.75
+@export var release_speed: float = 0.5
+
+@export var max_reel_speed: float = 3
+@export var max_release_speed: float = 1.5
+
+@export var required_catch_time: float = 20.0
 
 @export_category("Catch")
 @export var catch_weight : float = 1.0
