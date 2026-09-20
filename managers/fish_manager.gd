@@ -14,6 +14,8 @@ const FISH_LIST : Array[FishData] = [
 	preload("res://fish_resources/sample_fish4.tres"),
 ]
 
+var fish_collection : Dictionary = {}
+
 func get_rarity() -> Rarity:
 	var chance := randf_range(0, 1)
 	
@@ -36,3 +38,6 @@ func select_fish() -> FishData:
 	var ind : int = randi_range(0, fish_of_rarity.size() - 1)
 	
 	return fish_of_rarity[ind]
+
+func is_fish_caught(fish_id: String) -> bool:
+	return fish_collection.has(fish_id)

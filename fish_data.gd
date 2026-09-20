@@ -2,12 +2,13 @@ class_name FishData
 extends Resource
 
 @export_category("Identity")
+@export var fish_id : String
 @export var display_name : String
 @export var rarity : FishManager.Rarity
 
 @export_category("Texture")
-@export var fish_sprite : Texture2D
-@export var silhouette_sprite : Texture2D
+@export var fish_sprite : Texture
+@export var silhouette_sprite : Texture
 
 @export_category("Difficulty")
 @export var safe_zone_start_size: float = 0.35

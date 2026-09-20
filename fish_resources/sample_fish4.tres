@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_mc8qk")
+fish_id = "sample_4"
 display_name = "Sample 4"
 rarity = 3
 fish_sprite = ExtResource("1_605oj")

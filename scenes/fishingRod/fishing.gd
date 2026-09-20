@@ -121,6 +121,7 @@ func handle_catch_time(delta: float) -> void:
 				StateManager.fish_caught.emit(current_fish)
 				StateManager.task_info.emit("V to Continue")
 				state = State.CAUGHT
+				FishManager.fish_collection[current_fish.fish_id] = true
 				catch_progress = 0.0
 
 func isFishing() -> bool:

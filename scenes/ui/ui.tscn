@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://do6cfgycbkct6" path="res://assets/fonts/my 3x5 tiny mono pixel font.ttf" id="9_uegxj"]
 
 [node name="UI" type="CanvasLayer" unique_id=1434395001]
+process_mode = 3
 script = ExtResource("1_jcn1r")
 
 [node name="ControlUI" type="Control" parent="." unique_id=1577532642]
