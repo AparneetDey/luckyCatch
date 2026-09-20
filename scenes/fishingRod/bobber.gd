@@ -25,7 +25,7 @@ func _ready() -> void:
 	StateManager.cast_bobber.connect(onBobberCast.bind())
 	StateManager.fish_bite.connect(onFishBite.bind())
 	StateManager.reel_start.connect(onFightStart.bind())
-	StateManager.reel_stop.connect(onFightStop.bind())
+	StateManager.fish_caught.connect(onFightStop.bind())
 
 func _process(delta: float) -> void:
 	handle_animation()
@@ -61,6 +61,7 @@ func onBobberCast() -> void:
 
 func onFishBite() -> void:
 	state = State.BITE
+	SoundPlayer.play(SoundManager.Sound.SPLASH)
 	visible = false
 
 func onFightStart() -> void:
@@ -68,7 +69,7 @@ func onFightStart() -> void:
 	fight_time = 0.0
 	ripple_timer.start()
 
-func onFightStop() -> void:
+func onFightStop(_fish: FishData) -> void:
 	fighting = false
 	ripple_timer.stop()
 

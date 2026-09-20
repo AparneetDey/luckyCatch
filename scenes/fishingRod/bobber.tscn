@@ -493,7 +493,6 @@ _data = {
 
 [node name="Bobber" type="Node2D" unique_id=374119411]
 script = ExtResource("1_tggis")
-movement_radius_x = 24.0
 
 [node name="RippleSprite" type="Sprite2D" parent="." unique_id=1451355914]
 visible = false

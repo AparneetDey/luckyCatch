@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 StateManager="*uid://3ipb2jmhbgvm"
 FishManager="*uid://c8nt62r88cg6d"
+SoundPlayer="*uid://d4ko7exg7vlfg"
 
 [debug]
 
