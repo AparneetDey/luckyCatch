@@ -23,6 +23,7 @@ var waiting_time := 0.0 # Testing
 
 func _ready() -> void:
 	bobber.cast_complete.connect(onCastComplete.bind())
+	StateManager.pop_up_close.connect(onPopUpClose.bind())
 
 func _process(delta: float) -> void:
 	fishing_line.visible = isFishing()
@@ -46,7 +47,7 @@ func _process(delta: float) -> void:
 			StateManager.fish_bite.emit()
 
 func handle_input(delta: float) -> void:
-	if Input.is_action_just_pressed("a") and state == State.IDLE:
+	if state == State.IDLE and Input.is_action_just_pressed("a"):
 		StateManager.cast_bobber.emit()
 		state = State.CASTING
 	
@@ -77,9 +78,9 @@ func handle_danger_time(delta: float) -> void:
 			danger_time += delta
 			
 			if danger_time >= DANGER_LIMIT:
-				print("Catch Fail")
 				StateManager.catch_failed.emit()
 				state = State.FAILED
+				danger_time = 0.0
 
 func handle_catch_time(delta: float) -> void:
 	if state == State.FIGHT:
@@ -87,9 +88,9 @@ func handle_catch_time(delta: float) -> void:
 			catch_progress += delta
 			
 			if catch_progress >= current_fish.required_catch_time:
-				print("Fish caught")
 				StateManager.fish_caught.emit(current_fish)
 				state = State.CAUGHT
+				catch_progress = 0.0
 
 func isFishing() -> bool:
 	return [State.WAITING, State.BITE, State.FIGHT, State.CASTING].has(state)
@@ -100,3 +101,8 @@ func isInsideSafeZone() -> bool:
 func onCastComplete() -> void:
 	state = State.WAITING
 	waiting_time = randf_range(2.0, 5.0)
+
+func onPopUpClose() -> void:
+	current_fish = null
+	state = State.IDLE
+	StateManager.reel_stop.emit()

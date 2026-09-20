@@ -13,6 +13,12 @@ func _ready() -> void:
 	StateManager.fish_caught.connect(onFishCaught.bind())
 	StateManager.catch_failed.connect(onCatchFailed.bind())
 
+func _process(_delta: float) -> void:
+	if pop_up_screen and Input.is_action_just_pressed("v"):
+		pop_up_screen.queue_free()
+		pop_up_screen = null
+		StateManager.pop_up_close.emit()
+
 func onReelStart() -> void:
 	reel_bar.visible = true
 

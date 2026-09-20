@@ -10,3 +10,5 @@ signal update_safe_zone(size: float, position: float)
 
 signal fish_caught(fish: FishData)
 signal catch_failed
+
+signal pop_up_close
