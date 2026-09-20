@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b4m4s4rlftugv"]
 
 [ext_resource type="Texture2D" uid="uid://gyvlioy4pocf" path="res://assets/main/main-screen-bg.png" id="1_0qv31"]
+[ext_resource type="Script" uid="uid://c3k0xjf2tulrh" path="res://scenes/main/main_screen.gd" id="1_omlv2"]
 [ext_resource type="Texture2D" uid="uid://53y8vafas327" path="res://assets/main/title-1-sprite.png" id="2_ggbdh"]
 [ext_resource type="Texture2D" uid="uid://dmwp5ff6d46va" path="res://assets/main/title-2-sprite.png" id="3_bku2l"]
+[ext_resource type="Texture2D" uid="uid://cje24sd27uman" path="res://assets/main/main-play-button.png" id="4_bku2l"]
 
 [sub_resource type="Animation" id="Animation_ggbdh"]
 length = 0.001
@@ -30,9 +32,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(162.81, 34)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_bku2l"]
 resource_name = "load"
+length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -58,11 +73,76 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(166, 34), Vector2(43, 34)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3039236, 0.7022162),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_load_complete"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_omlv2"]
 _data = {
 &"RESET": SubResource("Animation_ggbdh"),
 &"load": SubResource("Animation_bku2l")
+}
+
+[sub_resource type="Animation" id="Animation_d7gd6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 91.5)]
+}
+
+[sub_resource type="Animation" id="Animation_wg17m"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(50, 91.5), Vector2(50, 93.50001), Vector2(50, 91.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6frpe"]
+_data = {
+&"RESET": SubResource("Animation_d7gd6"),
+&"idle": SubResource("Animation_wg17m")
 }
 
 [node name="MainScreen" type="Control" unique_id=776375242]
@@ -72,6 +152,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_omlv2")
 
 [node name="Background" type="TextureRect" parent="." unique_id=518654826]
 layout_mode = 0
@@ -96,12 +177,33 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 2.8099976
 offset_top = 34.0
-offset_right = 100.81012
+offset_right = 100.81
 offset_bottom = 56.0
 grow_horizontal = 0
 texture = ExtResource("3_bku2l")
 stretch_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1188578353]
+[node name="PlayButton" type="TextureRect" parent="." unique_id=1738820524]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = 19.5
+offset_right = 30.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 5.5)
+texture = ExtResource("4_bku2l")
+stretch_mode = 2
+
+[node name="LoadAnimation" type="AnimationPlayer" parent="." unique_id=1188578353]
 libraries/ = SubResource("AnimationLibrary_omlv2")
 autoplay = &"load"
+
+[node name="ButtonAnimation" type="AnimationPlayer" parent="." unique_id=640222044]
+libraries/ = SubResource("AnimationLibrary_6frpe")
