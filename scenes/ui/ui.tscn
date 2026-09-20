@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c401ibwy7tupk" path="res://assets/ui/buttons/c-button.png" id="5_uegxj"]
 [ext_resource type="Texture2D" uid="uid://byfqbg5igg63g" path="res://assets/ui/buttons/v-button.png" id="6_y220t"]
 [ext_resource type="PackedScene" uid="uid://crh0fxd6eoetj" path="res://scenes/ui/reel-bar/reel_bar.tscn" id="7_7vp6q"]
+[ext_resource type="FontFile" uid="uid://do6cfgycbkct6" path="res://assets/fonts/my 3x5 tiny mono pixel font.ttf" id="9_uegxj"]
 
 [node name="UI" type="CanvasLayer" unique_id=1434395001]
 script = ExtResource("1_jcn1r")
@@ -126,3 +127,19 @@ offset_bottom = -2.0
 grow_vertical = 0
 texture = ExtResource("6_y220t")
 stretch_mode = 2
+
+[node name="TaskLabel" type="Label" parent="." unique_id=199354934]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 11.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.12941177, 0.043137256, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("9_uegxj")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1

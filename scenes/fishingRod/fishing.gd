@@ -1,8 +1,6 @@
 class_name Fishing
 extends Node2D
 
-const DANGER_LIMIT : float = 5.0
-
 @onready var bamboo_rod: BambooRod = %BambooRod
 @onready var bobber: Bobber = %Bobber
 @onready var fishing_line: Line2D = %FishingLine
@@ -13,6 +11,7 @@ enum State {IDLE, CASTING, WAITING, BITE, FIGHT, CAUGHT, FAILED}
 var catch_progress : float = 0.0
 var current_fish : FishData = null
 var danger_time : float = 0.0
+var difficulty_time : float = 0.0
 var reel_speed : float
 var release_speed : float
 var state := State.IDLE
@@ -24,6 +23,11 @@ var waiting_time := 0.0 # Testing
 func _ready() -> void:
 	bobber.cast_complete.connect(onCastComplete.bind())
 	StateManager.pop_up_close.connect(onPopUpClose.bind())
+	on_idle()
+
+func on_idle() -> void:
+	if state == State.IDLE:
+		StateManager.task_info.emit("A to Cast")
 
 func _process(delta: float) -> void:
 	fishing_line.visible = isFishing()
@@ -32,6 +36,7 @@ func _process(delta: float) -> void:
 	handle_fishing_line()
 	handle_catch_time(delta)
 	handle_danger_time(delta)
+	handle_difficulty(delta)
 	
 	if state == State.WAITING:
 		waiting_time -= delta
@@ -45,15 +50,18 @@ func _process(delta: float) -> void:
 			safe_zone_position = randf_range(0.0, 1.0 - safe_zone_size)
 			StateManager.update_safe_zone.emit(safe_zone_size, safe_zone_position)
 			StateManager.fish_bite.emit()
+			StateManager.task_info.emit("S to Reel")
 
 func handle_input(delta: float) -> void:
 	if state == State.IDLE and Input.is_action_just_pressed("a"):
 		StateManager.cast_bobber.emit()
+		StateManager.task_info.emit("")
 		state = State.CASTING
 	
 	if state == State.BITE and Input.is_action_just_pressed("s"):
 		state = State.FIGHT
 		StateManager.reel_start.emit()
+		StateManager.task_info.emit("Control the Reel")
 	
 	if state == State.FIGHT:
 		if Input.is_action_pressed("s"):
@@ -63,6 +71,25 @@ func handle_input(delta: float) -> void:
 		
 		tension = clamp(tension, 0.0, 1.0)
 		StateManager.update_reel_indicator.emit(tension)
+
+func handle_difficulty(delta: float) -> void:
+	if state == State.FIGHT:
+		difficulty_time += delta
+		
+		if difficulty_time >= current_fish.difficulty_interval:
+			difficulty_time -= current_fish.difficulty_interval
+			increase_difficulty()
+
+func increase_difficulty() -> void:
+	safe_zone_size = max(safe_zone_size - 0.05, current_fish.safe_zone_min_size)
+	
+	safe_zone_position = randf_range(0.0, 1.0 - safe_zone_size)
+	
+	reel_speed = min(reel_speed + 0.5, current_fish.max_reel_speed)
+	
+	release_speed = min(release_speed + 0.3, current_fish.max_release_speed)
+	
+	StateManager.update_safe_zone.emit(safe_zone_size, safe_zone_position)
 
 func handle_fishing_line() -> void:
 	var rod_point := fishing_line.to_local(bamboo_rod.line_point.global_position)
@@ -77,8 +104,9 @@ func handle_danger_time(delta: float) -> void:
 		else:
 			danger_time += delta
 			
-			if danger_time >= DANGER_LIMIT:
+			if danger_time >= current_fish.danger_limit:
 				StateManager.catch_failed.emit()
+				StateManager.task_info.emit("V to Continue")
 				state = State.FAILED
 				danger_time = 0.0
 
@@ -89,6 +117,7 @@ func handle_catch_time(delta: float) -> void:
 			
 			if catch_progress >= current_fish.required_catch_time:
 				StateManager.fish_caught.emit(current_fish)
+				StateManager.task_info.emit("V to Continue")
 				state = State.CAUGHT
 				catch_progress = 0.0
 
@@ -105,4 +134,5 @@ func onCastComplete() -> void:
 func onPopUpClose() -> void:
 	current_fish = null
 	state = State.IDLE
+	on_idle()
 	StateManager.reel_stop.emit()

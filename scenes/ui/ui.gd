@@ -4,6 +4,7 @@ const POP_UP_PREFAB := preload("res://scenes/ui/fish_caught_pop_up.tscn")
 const CATCH_FAIL_SPRITE := preload("res://assets/ui/catch-fail.png")
 
 @onready var reel_bar: TextureRect = %ReelBar
+@onready var task_label: Label = %TaskLabel
 
 var pop_up_screen : FishCaughtPopUp = null
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 	StateManager.reel_stop.connect(onReelStop.bind())
 	StateManager.fish_caught.connect(onFishCaught.bind())
 	StateManager.catch_failed.connect(onCatchFailed.bind())
+	StateManager.task_info.connect(set_task_label.bind())
 
 func _process(_delta: float) -> void:
 	if pop_up_screen and Input.is_action_just_pressed("v"):
@@ -42,3 +44,6 @@ func onCatchFailed() -> void:
 		pop_up_screen = POP_UP_PREFAB.instantiate()
 		add_child(pop_up_screen)
 		pop_up_screen.set_properties(CATCH_FAIL_SPRITE, "Catch Failed")
+
+func set_task_label(text: String) -> void:
+	task_label.text = text

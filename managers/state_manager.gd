@@ -12,3 +12,5 @@ signal fish_caught(fish: FishData)
 signal catch_failed
 
 signal pop_up_close
+
+signal task_info(text: String)

@@ -18,10 +18,12 @@ extends Resource
 @export var reel_speed: float = 0.75
 @export var release_speed: float = 0.5
 
-@export var max_reel_speed: float = 3
-@export var max_release_speed: float = 1.5
+@export var max_reel_speed: float = 2.5
+@export var max_release_speed: float = 1
 
 @export var required_catch_time: float = 20.0
+
+@export var danger_limit : float = 3.0
 
 @export_category("Catch")
 @export var catch_weight : float = 1.0
