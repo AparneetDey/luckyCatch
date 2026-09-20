@@ -50,6 +50,7 @@ func handle_input(delta: float) -> void:
 		StateManager.reel_start.emit()
 	
 	if state == State.FIGHT:
+		print(isInsideSafeZone())
 		if Input.is_action_pressed("s"):
 			tension += reel_speed * delta
 		else:
@@ -66,6 +67,9 @@ func handleFishingLine() -> void:
 
 func isFishing() -> bool:
 	return [State.WAITING, State.BITE, State.FIGHT, State.CASTING].has(state)
+
+func isInsideSafeZone() -> bool:
+	return tension >= safe_zone_position and tension <= safe_zone_position + safe_zone_size
 
 func onCastComplete() -> void:
 	state = State.WAITING
