@@ -25,11 +25,11 @@ Can you fill out your Fish Collection and catch every creature from the common *
 
 - **Tension Balancing Minigame**: Control the reel by tapping and holding to keep the tension needle inside the safe zone while the fish thrashes.
 - **Dynamic Difficulty Scaling**: The longer a fish fights, the faster the tension shifts and the smaller the safe zone becomes.
-- **13 Unique Catchables across 4 Rarities**:
-  - 🐟 **Common**: *Useless Can*, *Weird Plant*, *Salmon*, *Tiny Fish*
-  - 🌿 **Uncommon**: *Happy Jelly*, *Tortle*, *Looking Heart*, *Creepy Starfish*
-  - 🐙 **Rare**: *Confused Octo*, *Jacket Fish*, *Venomu*
-  - 🐉 **Legendary**: *Space Worm*, *Wing Snake*
+- **Unique Catchables across 4 Rarities**:
+  - 🐟 **Common**
+  - 🌿 **Uncommon**
+  - 🐙 **Rare**
+  - 🐉 **Legendary**
 - **Fish Collection Book ("Fishdex")**: Review your catches anytime! Uncaught species appear as mystery silhouettes until you reel them in.
 - **Authentic Game Boy Aesthetic**:
   - Native 160 × 144 viewport with clean integer scaling.
